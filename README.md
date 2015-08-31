@@ -81,6 +81,31 @@ try {
 }
 ```
 
+Method daneSzukaj() in example above accepts also two more arguments. Check comments in this example:
+
+```php
+// Request for extended information
+$extended = TRUE;
+// Request for PKD list (PKD code with description)
+$pkd = TRUE;
+
+//Search by NIP number
+$params = [
+    'Nip' => 1234567890,
+    'Regon' => null,
+    'Krs' => null
+];
+
+try {
+
+    $data = $client->get()->daneSzukaj($session_id, $params, $extended, $pkd);
+} catch (\Exception $e) {
+    echo "There was an error.\n";
+}
+```
+The $data will contain basic fields with extended list of fields and PKD list under 'ListaDzialalnosci' field.
+Extended info and PKD list can be requested independently.
+
 License
 ======================
 
